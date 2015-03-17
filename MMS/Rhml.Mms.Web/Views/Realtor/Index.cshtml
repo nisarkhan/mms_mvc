@@ -1,0 +1,37 @@
+﻿@using Kendo.Mvc.UI;
+@model IEnumerable<Rhml.Mms.Web.ViewModel.RealtorListViewModel>
+
+@{
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+<h2>Realtor</h2>
+<div class="well">
+    @(Html.Kendo()
+      .Grid(Model)
+        .Name("RealtorGrid")
+      .Columns(columns =>
+      {
+          columns.Bound(r => r.CompanyName);
+          columns.Bound(r => r.Name);
+          columns.Bound(r => r.Email);
+          columns.Bound(r => r.UserName);
+          columns.Bound(r => r.PrefferedStatus);
+          columns.Template(@<text></text>).ClientTemplate(Html.ActionLink("Edit", "EditRealtor", new { Id = "#= UserId#" }).ToHtmlString());
+      }).ToolBar(toolBar =>
+        {
+            toolBar.Custom().Text("Add Realtor").Action("CreateRealtor", "Realtor");
+        })
+          .Pageable()
+          .Sortable()
+          .Filterable()
+          .Navigatable()
+          .Resizable(resize => resize.Columns(true))
+          .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model =>
+          {
+              model.Id(ar => ar.UserId);
+              model.Field(ar => ar.UserId).Editable(false);
+          })
+         .Read(read => read.Action("GetRealtors", "Realtor"))))
+</div>

@@ -1,0 +1,46 @@
+﻿@{
+    var user = (Republic.Core.Security.Interfaces.IAppUser)ViewBag.CurrentUser;
+}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+@*<html lang="en">*@
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Kendo/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+</head>
+<body>
+    <div class="container">
+        <div class="header">Mobile Management System</div>
+        <div class="userinfo"><div class="userlogin">Hello, <span>@user.FirstName @user.LastName</span>!</div></div>
+        <div class="row clearfix">
+            <div class="col-lg-2">
+                <ul id="menu" data-role="menu" class="k-widget k-reset k-header k-menu k-menu-vertical" tabindex="0" role="menubar" aria-activedescendant="menu_mn_active">
+                    <li class="k-item k-state-default k-first" role="menuitem" id="menu_mn_active"><a class="k-link" href="@Url.Action("Index", "Realtor")">Realtor</a></li>
+                    <li class="k-item k-state-default" role="menuitem"><a class="k-link">Users</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-10">@RenderBody()</div>
+        </div>
+
+    </div>
+
+
+
+    @Scripts.Render("~/bundles/Kendo")
+    @Scripts.Render("~/bundles/knockout")
+    @Scripts.Render("~/bundles/appUtil")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

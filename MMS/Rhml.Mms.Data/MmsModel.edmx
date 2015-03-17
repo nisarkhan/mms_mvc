@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Rhml.Mms.Data.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="LoginHistories">
+          <Key>
+            <PropertyRef Name="LoginHistory_Id" />
+            <PropertyRef Name="LoginDatetime" />
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="LoginHistory_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LoanOfficerEmployeeNumber" Type="nvarchar" MaxLength="64" />
+          <Property Name="LoanOfficerFirstName" Type="nvarchar" MaxLength="64" />
+          <Property Name="LoanOfficerLastName" Type="nvarchar" MaxLength="64" />
+          <Property Name="LoginDatetime" Type="datetime" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOS_LoanOfficer_Lookup">
+          <Key>
+            <PropertyRef Name="LOS_LoanOfficer_Id" />
+          </Key>
+          <Property Name="LOS_LoanOfficer_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Avatar" Type="nvarchar" MaxLength="254" />
+          <Property Name="Email" Type="nvarchar" MaxLength="254" />
+          <Property Name="EmployeeNumber" Type="nvarchar" MaxLength="64" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="15" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="64" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="64" />
+          <Property Name="Name" Type="nvarchar" MaxLength="128" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="15" />
+          <Property Name="NMLS" Type="nvarchar" MaxLength="64" />
+          <Property Name="URL_Web" Type="nvarchar" MaxLength="254" />
+        </EntityType>
+        <EntityType Name="Realtors_Extension">
+          <Key>
+            <PropertyRef Name="Realtor_Extension_Id" />
+          </Key>
+          <Property Name="Realtor_Extension_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="User_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Avatar" Type="nvarchar" MaxLength="254" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="128" />
+          <Property Name="IsPreferredIndicator" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Realtors_Master">
+          <Key>
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="first_name" />
+            <PropertyRef Name="last_name" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="password" />
+            <PropertyRef Name="user_name" />
+            <PropertyRef Name="unique_user_key" />
+          </Key>
+          <Property Name="user_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="avatar" Type="nvarchar" MaxLength="254" />
+          <Property Name="company" Type="nvarchar" MaxLength="128" />
+          <Property Name="email" Type="nvarchar" MaxLength="128" />
+          <Property Name="first_name" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="preferred" Type="bit" />
+          <Property Name="last_name" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="129" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="phone" Type="nvarchar" MaxLength="30" />
+          <Property Name="user_name" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="unique_user_key" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="User_Id" />
+          </Key>
+          <Property Name="User_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserType_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatedDatetime" Type="datetime" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="128" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="ForgotPassword" Type="nchar" MaxLength="64" />
+          <Property Name="ForgotPasswordIndicator" Type="bit" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="30" />
+          <Property Name="UniqueUserKey" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="UpdatedDatetime" Type="datetime" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserTypes">
+          <Key>
+            <PropertyRef Name="Type" />
+          </Key>
+          <Property Name="UserType_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="DotMMSDataStoreContainer">
+          <EntitySet Name="LoginHistories" EntityType="Self.LoginHistories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOS_LoanOfficer_Lookup" EntityType="Self.LOS_LoanOfficer_Lookup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Realtors_Extension" EntityType="Self.Realtors_Extension" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Realtors_Master" EntityType="Self.Realtors_Master" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTypes" EntityType="Self.UserTypes" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Rhml.Mms.Data" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MmsModels" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="LoginHistories" EntityType="Rhml.Mms.Data.LoginHistories" />
+          <EntitySet Name="LOS_LoanOfficer_Lookup" EntityType="Rhml.Mms.Data.LOS_LoanOfficer_Lookup" />
+          <EntitySet Name="Realtors_Extension" EntityType="Rhml.Mms.Data.Realtors_Extension" />
+          <EntitySet Name="Realtors_Master" EntityType="Rhml.Mms.Data.Realtors_Master" />
+          <EntitySet Name="Users" EntityType="Rhml.Mms.Data.Users" />
+          <EntitySet Name="UserTypes" EntityType="Rhml.Mms.Data.UserTypes" />
+        </EntityContainer>
+        <EntityType Name="LoginHistories">
+          <Key>
+            <PropertyRef Name="LoginHistory_Id" />
+            <PropertyRef Name="LoginDatetime" />
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="LoginHistory_Id" Type="Guid" Nullable="false" />
+          <Property Name="LoanOfficerEmployeeNumber" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="LoanOfficerFirstName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="LoanOfficerLastName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="LoginDatetime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="LOS_LoanOfficer_Lookup">
+          <Key>
+            <PropertyRef Name="LOS_LoanOfficer_Id" />
+          </Key>
+          <Property Name="LOS_LoanOfficer_Id" Type="Guid" Nullable="false" />
+          <Property Name="Avatar" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeNumber" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="NMLS" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="URL_Web" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Realtors_Extension">
+          <Key>
+            <PropertyRef Name="Realtor_Extension_Id" />
+          </Key>
+          <Property Name="Realtor_Extension_Id" Type="Guid" Nullable="false" />
+          <Property Name="User_Id" Type="Guid" Nullable="false" />
+          <Property Name="Avatar" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="IsPreferredIndicator" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Realtors_Master">
+          <Key>
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="first_name" />
+            <PropertyRef Name="last_name" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="password" />
+            <PropertyRef Name="user_name" />
+            <PropertyRef Name="unique_user_key" />
+          </Key>
+          <Property Name="user_id" Type="Guid" Nullable="false" />
+          <Property Name="avatar" Type="String" MaxLength="254" FixedLength="false" Unicode="true" />
+          <Property Name="company" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="first_name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="preferred" Type="Boolean" />
+          <Property Name="last_name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="129" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="user_name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="unique_user_key" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="User_Id" />
+          </Key>
+          <Property Name="User_Id" Type="Guid" Nullable="false" />
+          <Property Name="UserType_Id" Type="Guid" Nullable="false" />
+          <Property Name="CreatedDatetime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Email" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="ForgotPassword" Type="String" MaxLength="64" FixedLength="true" Unicode="true" />
+          <Property Name="ForgotPasswordIndicator" Type="Boolean" Nullable="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="UniqueUserKey" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedDatetime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UserTypes">
+          <Key>
+            <PropertyRef Name="Type" />
+          </Key>
+          <Property Name="UserType_Id" Type="Guid" Nullable="false" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DotMMSDataStoreContainer" CdmEntityContainer="MmsModels" >
+          <EntitySetMapping Name="LoginHistories">
+            <EntityTypeMapping TypeName="Rhml.Mms.Data.LoginHistories">
+              <MappingFragment StoreEntitySet="LoginHistories">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="LoginDatetime" ColumnName="LoginDatetime" />
+                <ScalarProperty Name="LoanOfficerLastName" ColumnName="LoanOfficerLastName" />
+                <ScalarProperty Name="LoanOfficerFirstName" ColumnName="LoanOfficerFirstName" />
+                <ScalarProperty Name="LoanOfficerEmployeeNumber" ColumnName="LoanOfficerEmployeeNumber" />
+                <ScalarProperty Name="LoginHistory_Id" ColumnName="LoginHistory_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOS_LoanOfficer_Lookup">
+            <EntityTypeMapping TypeName="Rhml.Mms.Data.LOS_LoanOfficer_Lookup">
+              <MappingFragment StoreEntitySet="LOS_LoanOfficer_Lookup">
+                <ScalarProperty Name="URL_Web" ColumnName="URL_Web" />
+                <ScalarProperty Name="NMLS" ColumnName="NMLS" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="EmployeeNumber" ColumnName="EmployeeNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+                <ScalarProperty Name="LOS_LoanOfficer_Id" ColumnName="LOS_LoanOfficer_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Realtors_Extension">
+            <EntityTypeMapping TypeName="Rhml.Mms.Data.Realtors_Extension">
+              <MappingFragment StoreEntitySet="Realtors_Extension">
+                <ScalarProperty Name="IsPreferredIndicator" ColumnName="IsPreferredIndicator" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+                <ScalarProperty Name="Realtor_Extension_Id" ColumnName="Realtor_Extension_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Realtors_Master">
+            <EntityTypeMapping TypeName="Rhml.Mms.Data.Realtors_Master">
+              <MappingFragment StoreEntitySet="Realtors_Master">
+                <ScalarProperty Name="unique_user_key" ColumnName="unique_user_key" />
+                <ScalarProperty Name="user_name" ColumnName="user_name" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="preferred" ColumnName="preferred" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="company" ColumnName="company" />
+                <ScalarProperty Name="avatar" ColumnName="avatar" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Rhml.Mms.Data.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UpdatedDatetime" ColumnName="UpdatedDatetime" />
+                <ScalarProperty Name="UniqueUserKey" ColumnName="UniqueUserKey" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="ForgotPasswordIndicator" ColumnName="ForgotPasswordIndicator" />
+                <ScalarProperty Name="ForgotPassword" ColumnName="ForgotPassword" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CreatedDatetime" ColumnName="CreatedDatetime" />
+                <ScalarProperty Name="UserType_Id" ColumnName="UserType_Id" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTypes">
+            <EntityTypeMapping TypeName="Rhml.Mms.Data.UserTypes">
+              <MappingFragment StoreEntitySet="UserTypes">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="UserType_Id" ColumnName="UserType_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

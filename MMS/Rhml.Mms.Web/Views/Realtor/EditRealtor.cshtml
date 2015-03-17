@@ -1,0 +1,126 @@
+﻿@model Rhml.Mms.Web.ViewModel.RealtorViewModel
+@{
+    if (Model.UserId != Guid.Empty)
+    {
+        ViewBag.Title = "Edit Realtor";
+    }
+    else
+    {
+        ViewBag.Title = "New Realtor";
+    }
+    Layout = "~/Views/Shared/_LayoutMaster.cshtml";
+}
+@if (Model.UserId == Guid.Empty)
+{
+    <h2>Add Realtor</h2>
+}
+else
+{
+    <h2>Edit Realtor</h2>
+}
+@using (Html.BeginForm("EditRealtor", "Realtor"))
+{
+    @Html.AntiForgeryToken()
+    <div id="appInfo" class="well">
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.UserId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email)
+            @Html.TextBoxFor(model => model.Email, new { @class = "form-control", autofocus = "autofocus" })
+            <div class="control-label">
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password)
+            @Html.TextBoxFor(model => model.Password, new { @class = "form-control", type = "password" })
+            <div class="control-label">
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.FirstName)
+            @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control" })
+            <div class="control-label">
+                @Html.ValidationMessageFor(model => model.FirstName)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.LastName)
+            @Html.TextBoxFor(model => model.LastName, new { @class = "form-control" })
+            <div class="control-label">
+                @Html.ValidationMessageFor(model => model.LastName)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.CompanyName)
+            @Html.TextBoxFor(model => model.CompanyName, new { @class = "form-control" })
+            <div class="control-label">
+                @Html.ValidationMessageFor(model => model.CompanyName)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Phone)
+            @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control" })
+            <div class="control-label">
+                @Html.ValidationMessageFor(model => model.FirstName)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Avator)
+            @Html.TextBoxFor(model => model.Avator, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+           
+            <div class="checkbox">
+                @Html.CheckBoxFor(model => model.IsPreffered) @Html.LabelFor(model => model.IsPreffered)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name)
+            <div class="checkbox">
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+            </div>
+            <div class="control-label">
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.UniqueUserKey)
+            <div class="checkbox">
+                @Html.TextBoxFor(model => model.UniqueUserKey, new { @class = "form-control" })
+            </div>
+            <div class="control-label">
+                @Html.ValidationMessageFor(model => model.UniqueUserKey)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserName)
+            <div class="checkbox">
+                @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
+            </div>
+            <div class="control-label">
+                @Html.ValidationMessageFor(model => model.UserName)
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="pull-left">
+                @Html.ActionLink("Cancel", "Index", "Realtor", new {@class = "btn btn-default"})
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+            <div class="pull-right">
+                @if (Model.UserId != Guid.Empty)
+                {
+                     
+                        @Html.ActionLink("Delete", "DeleteRealtor", "Realtor",
+                    new { id = Model.UserId },
+                    new { @class = "btn btn-danger delete" })
+                    
+                }
+            </div>
+        </div>
+    </div>
+    
+}

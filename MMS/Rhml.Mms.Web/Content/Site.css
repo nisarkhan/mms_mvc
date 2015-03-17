@@ -1,0 +1,94 @@
+﻿body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    color: #000;
+    overflow: hidden;
+}
+
+a {
+    cursor: pointer;
+}
+
+ul, ol, dl {
+    padding: 0;
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin-top: 0;
+}
+
+a img {
+    border: none;
+}
+
+
+a:link {
+    color: #42413C;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #6E6C64;
+    text-decoration: none;
+}
+
+a:hover, a:active, a:focus {
+    text-decoration: none;
+    color: #000;
+}
+
+/* ~~ This fixed width container surrounds all other divs ~~ */
+.container {
+    width: 100%;
+    background-color: #FFFFFF;
+    margin: 0 auto;
+}
+
+.header {
+    font-size: 12px;
+    height: 25px;
+    background-image: -webkit-gradient( linear, left top, left bottom, color-stop(0, #FF7700), color-stop(1, #FAB62F) );
+    background-image: -o-linear-gradient(bottom, #FF7700 0%, #FAB62F 100%);
+    background-image: -moz-linear-gradient(bottom, #FF7700 0%, #FAB62F 100%);
+    background-image: -webkit-linear-gradient(bottom, #FF7700 0%, #FAB62F 100%);
+    background-image: -ms-linear-gradient(bottom, #FF7700 0%, #FAB62F 100%);
+    background-image: linear-gradient(to bottom, #FF7700 0%, #FAB62F 100%);
+    padding: 5px;
+}
+
+.userinfo {
+    border-color: #dbdbde;
+    background-color: #dbdbde;
+    padding: 2px;
+    height: 20px;
+}
+
+.userlogin {
+    float: right;
+}
+
+.field-validation-error {
+    color: #ff0000;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.validation-summary-valid {
+    display: none;
+}
